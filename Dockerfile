@@ -5,6 +5,7 @@ MAINTAINER hervé beraud <herveberaud.pro@gmail.com>
 RUN apt-get update
 RUN apt-get install -y firefox
 RUN apt-get install -y vim
+RUN apt-get install -y git
 
 RUN useradd -ms /bin/bash developer
 RUN export uid=1000 gid=1000
