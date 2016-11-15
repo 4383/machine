@@ -10,7 +10,7 @@ RUN apt-get install -y tmux
 RUN apt-get install -y curl
 
 RUN useradd -ms /bin/bash developer
-#RUN export uid=1000 gid=1000
+RUN export uid=1000 gid=1000
 ENV HOME /home/developer
 
 RUN mkdir -p $HOME/.vim/bundle
