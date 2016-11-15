@@ -28,7 +28,7 @@ prompt() {
 
         USERNAME=`whoami`
         HOSTNAME=`hostname -s`
-#CURRENTPATH=`pwd | sed "s|$HOME|~|g"`
+        CURRENTPATH=`pwd | sed "s|$HOME|~|g"`
 
 # Change the Window title
 WINDOWTITLE="$USERNAME@$HOSTNAME"
@@ -36,7 +36,7 @@ echo -ne "\033]0;$WINDOWTITLE\007"
 
 # Change the dynamic prompt
 #LEFTPROMPT="$Yellow$CURRENTPATH"
-LEFTPROMPT="\[$Yellow\]\w\n\[$Cyan\]$USERNAME@$HOSTNAME":"\[$Yellow\] [\t]"
+LEFTPROMPT="\[$Yellow\]$CURRENTPATH\n\[$Cyan\]$USERNAME@$HOSTNAME":"\[$Yellow\] [\t]"
 
 GITSTATUS=$(git status 2> /dev/null)
 if [ $? -eq 0 ]; then
