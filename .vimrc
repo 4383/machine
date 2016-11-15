@@ -1,4 +1,5 @@
 filetype plugin on
+execute pathogen#infect()
 set ignorecase
 set ruler
 set modeline
