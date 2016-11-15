@@ -3,7 +3,7 @@ sudo: required
 services:
   - docker
   
-before_install:
+script:
   - docker build -t 4383/machine .
   - docker run -d 4383/machine /bin/bash -c "cat .bashrc | grep 'machine auto setup'"
   - docker ps -a
