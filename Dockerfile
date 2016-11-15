@@ -8,12 +8,12 @@ RUN apt-get install vim
 
 RUN useradd -ms /bin/bash developer
 RUN export uid=1000 gid=1000
+ENV HOME /home/developer
 
-COPY ./.vimrc /etc/vim/vimrc
-COPY ./.bashrc /etc/bashrc
+COPY ./.vimrc $HOME
+COPY ./.bashrc $HOME
 
 USER developer
-ENV HOME /home/developer
 WORKDIR $HOME
 
 CMD firefox & /bin/bash
