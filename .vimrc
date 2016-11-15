@@ -16,6 +16,13 @@ set smarttab
 set shiftwidth=4
 set softtabstop=4
 set background=dark
+set nohlsearch
 syntax on
 filetype indent plugin on
+
+"#########################################
+" AutoCompletion python
+"#########################################
+let g:pydiction_location = '~/.vim/vimfiles/ftplugin/pydiction/complete-dict'
+let g:pydiction_menu_height = 20
 
