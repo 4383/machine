@@ -26,3 +26,11 @@ filetype indent plugin on
 let g:pydiction_location = '~/.vim/bundle/pydiction/complete-dict'
 let g:pydiction_menu_height = 20
 
+set list
+set listchars=nbsp:¤,tab:>-,extends:>,precedes:<,eol:¶
+colorscheme delek
+
+map <C-t> :tabnew<CR>
+map <C-h> :tabprevious<CR>
+map <C-l> :tabnext<CR>
+map <S-q> :tabclose<CR>
