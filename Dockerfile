@@ -19,6 +19,8 @@ RUN cd $HOME/.vim/bundle && git clone https://github.com/rkulla/pydiction.git
 COPY ./.vimrc $HOME
 COPY ./.bashrc $HOME
 
+RUN chown -R developer:developer $HOME
+
 WORKDIR $HOME
 
 CMD firefox & /bin/bash
