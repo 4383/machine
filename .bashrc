@@ -1,4 +1,4 @@
-# machine auto setup
+# failed auto setup
 # Source global definitions
 if [ -f /etc/bashrc ]; then
         . /etc/bashrc
