@@ -26,7 +26,8 @@ RUN curl -LSso $HOME/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 # Configure dropbox
 ########################
 RUN cd $HOME && wget -O - "https://www.dropbox.com/download?plat=lnx.x86" | tar xzf -
-RUN $HOME/.dropbox-dist/dropboxd
+RUN ls -la $HOME
+#RUN $HOME/.dropbox-dist/dropboxd
 
 COPY ./.vimrc $HOME
 COPY ./.bashrc $HOME
@@ -36,4 +37,4 @@ RUN chown -R developer:developer $HOME
 USER developer
 WORKDIR $HOME
 
-CMD firefox & /bin/bash
+CMD  $HOME/.dropbox-dist/dropboxd && /bin/bash
