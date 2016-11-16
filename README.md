@@ -5,6 +5,9 @@ Your development environment embedded in a docker container
 [![Docker Automated buil](https://img.shields.io/docker/automated/4383/machine.svg)]()
 [![Docker Pulls](https://img.shields.io/docker/pulls/4383/machine.svg)]()
 
+## Version
+v0.1.0
+
 ## Features
 - vim
 - improved bash
