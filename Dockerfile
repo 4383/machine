@@ -31,8 +31,6 @@ RUN apt-get install -y wget
 RUN apt-get install -y python3
 RUN apt-get install -y python3-pip
 RUN apt-get install -y lynx
-RUN add-apt-repository ppa:webupd8team/atom
-RUN apt-get install -y atom
 
 ########################
 # Configure user
@@ -54,6 +52,13 @@ RUN curl -LSso $HOME/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 ########################
 RUN cd $HOME && wget -O - "https://www.dropbox.com/download?plat=lnx.x86" | tar xzf -
 RUN cd /usr/bin && wget -O dropbox.py https://www.dropbox.com/download?dl=packages/dropbox.py
+
+########################
+# Install atom
+########################
+RUN curl -SL https://github.com/atom/atom/releases/download/v1.12.3/atom-amd64.deb -o /tmp/atom-amd64.deb
+RUN dpkg --install /tmp/atom-amd64.deb
+RUN rm -rf /tmp/atom-amd64.deb
 
 ########################
 # Setup home directory
