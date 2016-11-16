@@ -19,8 +19,9 @@ MAINTAINER hervé beraud <herveberaud.pro@gmail.com>
 ########################
 # Install packages
 ########################
-RUN add-apt-repository ppa:webupd8team/atom
 RUN apt-get update
+RUN apt-get install -y python-software-properties
+RUN apt-get install -y software-properties-common
 RUN apt-get install -y firefox
 RUN apt-get install -y vim
 RUN apt-get install -y git
@@ -30,6 +31,7 @@ RUN apt-get install -y wget
 RUN apt-get install -y python3
 RUN apt-get install -y python3-pip
 RUN apt-get install -y lynx
+RUN add-apt-repository ppa:webupd8team/atom
 RUN apt-get install -y atom
 
 ########################
