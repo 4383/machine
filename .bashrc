@@ -81,12 +81,12 @@ else
         PS1=$RootPrompt" "
 fi
 ############################################################################
-alias reload='. ~/.bashrc'
-alias vim='vi'
-
 EDITOR=/usr/bin/vim
 
 # make bash autocomplete with up arrow
 bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
 
+echo "#################"
+echo "# Machine v0.1.0"
+echo "#################"
