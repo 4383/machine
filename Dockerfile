@@ -49,8 +49,6 @@ RUN curl -LSso $HOME/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 ########################
 RUN cd $HOME && wget -O - "https://www.dropbox.com/download?plat=lnx.x86" | tar xzf -
 RUN cd /usr/bin && wget -O dropbox.py https://www.dropbox.com/download?dl=packages/dropbox.py
-RUN ls /usr/bin | grep dropbox
-RUN ls -la $HOME/.dropbox-dist/
 
 ########################
 # Setup home directory
