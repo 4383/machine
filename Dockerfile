@@ -31,6 +31,18 @@ RUN apt-get install -y wget
 RUN apt-get install -y python3
 RUN apt-get install -y python3-pip
 RUN apt-get install -y lynx
+RUN apt-get install -y --no-install-recommends \
+    ca-certificates \
+    curl \
+    gconf2 \
+    gvfs-bin \
+    libasound2 \
+    libgtk2.0-0 \
+    libnotify4 \
+    libnss3 \
+    libxtst6 \
+    xdg-utils \
+    && rm -rf /var/lib/apt/lists/*
 
 ########################
 # Configure user
