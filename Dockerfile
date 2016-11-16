@@ -31,14 +31,15 @@ RUN cd $HOME && wget -O - "https://www.dropbox.com/download?plat=lnx.x86" | tar 
 RUN cd /usr/bin && wget https://www.dropbox.com/download?dl=packages/dropbox.py
 RUN ls /usr/bin | grep dropbox
 RUN ls -la $HOME/.dropbox-dist/
-#RUN $HOME/.dropbox-dist/dropboxd
 
+########################
+# Setup home directory
+########################
 COPY ./.vimrc $HOME
 COPY ./.bashrc $HOME
-
+COPY ./.bash_aliases $HOME
 RUN chown -R developer:developer $HOME
 
 USER developer
 WORKDIR $HOME
-
 CMD  $HOME/.dropbox-dist/dropboxd && /bin/bash
