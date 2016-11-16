@@ -9,7 +9,7 @@ services:
   - docker
   
 script:
-  - bumpversion minor
+  - bumpversion --verbose minor
   - docker build -t 4383/machine .
   - docker run 4383/machine /bin/bash -c "cat .bashrc | grep 'machine auto setup'" | grep "machine"
   - docker ps -a
