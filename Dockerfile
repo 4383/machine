@@ -1,7 +1,24 @@
+###############################################################
+#
+# ███╗   ███╗ █████╗  ██████╗██╗  ██╗██╗███╗   ██╗███████╗
+# ████╗ ████║██╔══██╗██╔════╝██║  ██║██║████╗  ██║██╔════╝
+# ██╔████╔██║███████║██║     ███████║██║██╔██╗ ██║█████╗  
+# ██║╚██╔╝██║██╔══██║██║     ██╔══██║██║██║╚██╗██║██╔══╝  
+# ██║ ╚═╝ ██║██║  ██║╚██████╗██║  ██║██║██║ ╚████║███████╗
+# ╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝╚══════╝
+#                                                       
+# Use your development environment anywherey !
+# https://github.com/4383/machine
+# v0.1.0
+# Created by : Hervé BERAUD (4383)
+###############################################################
 FROM ubuntu:latest
 
 MAINTAINER hervé beraud <herveberaud.pro@gmail.com>
 
+########################
+# Install packages
+########################
 RUN apt-get update
 RUN apt-get install -y firefox
 RUN apt-get install -y vim
@@ -12,6 +29,9 @@ RUN apt-get install -y wget
 RUN apt-get install -y python3
 RUN apt-get install -y python3-pip
 
+########################
+# Configure user
+########################
 RUN useradd -ms /bin/bash developer
 RUN export uid=1000 gid=1000
 ENV HOME /home/developer
@@ -28,7 +48,7 @@ RUN curl -LSso $HOME/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 # Configure dropbox
 ########################
 RUN cd $HOME && wget -O - "https://www.dropbox.com/download?plat=lnx.x86" | tar xzf -
-RUN cd /usr/bin && wget https://www.dropbox.com/download?dl=packages/dropbox.py
+RUN cd /usr/bin && wget -O dropbox.py https://www.dropbox.com/download?dl=packages/dropbox.py
 RUN ls /usr/bin | grep dropbox
 RUN ls -la $HOME/.dropbox-dist/
 
