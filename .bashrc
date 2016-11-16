@@ -83,6 +83,10 @@ fi
 ############################################################################
 EDITOR=/usr/bin/vim
 
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
 # make bash autocomplete with up arrow
 bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
