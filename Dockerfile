@@ -19,6 +19,7 @@ MAINTAINER hervé beraud <herveberaud.pro@gmail.com>
 ########################
 # Install packages
 ########################
+RUN add-apt-repository ppa:webupd8team/atom
 RUN apt-get update
 RUN apt-get install -y firefox
 RUN apt-get install -y vim
@@ -28,6 +29,8 @@ RUN apt-get install -y curl
 RUN apt-get install -y wget
 RUN apt-get install -y python3
 RUN apt-get install -y python3-pip
+RUN apt-get install -y lynx
+RUN apt-get install -y atom
 
 ########################
 # Configure user
