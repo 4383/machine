@@ -63,7 +63,7 @@ RUN curl -LSso $HOME/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 # Configure dropbox
 ########################
 RUN cd $HOME && wget -O - "https://www.dropbox.com/download?plat=lnx.x86" | tar xzf -
-RUN cd /usr/bin && wget -O dropbox.py https://www.dropbox.com/download?dl=packages/dropbox.py
+RUN cd /usr && wget -O dropbox.py https://www.dropbox.com/download?dl=packages/dropbox.py
 
 ########################
 # Install atom
