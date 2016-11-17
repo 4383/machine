@@ -91,6 +91,8 @@ fi
 bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
 
+
 echo "#################"
 echo "# Machine v0.1.0"
 echo "#################"
+cat ~/.splash
