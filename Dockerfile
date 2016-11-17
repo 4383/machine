@@ -19,8 +19,8 @@ MAINTAINER hervé beraud <herveberaud.pro@gmail.com>
 ########################
 # Install packages
 ########################
-RUN echo 'deb http://linux.dropbox.com/ubuntu xenial main' >> /etc/apt/source.list
-RUN apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
+#RUN echo 'deb http://linux.dropbox.com/ubuntu xenial main' >> /etc/apt/source.list
+#RUN apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
 RUN apt-get update
 RUN apt-get install -y python-software-properties
 RUN apt-get install -y software-properties-common
