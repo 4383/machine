@@ -32,8 +32,8 @@ RUN apt-get install -y python3
 RUN apt-get install -y python3-pip
 RUN apt-get install -y lynx
 RUN apt-get install -y ruby
-RUN apt-get install -y certbot 
-RUN apt-get install -y python-certbot-apache
+#RUN apt-get install -y certbot 
+#RUN apt-get install -y python-certbot-apache
 RUN apt-get install -y --no-install-recommends \
     ca-certificates \
     curl \
