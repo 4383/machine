@@ -19,6 +19,8 @@ MAINTAINER hervé beraud <herveberaud.pro@gmail.com>
 ########################
 # Install packages
 ########################
+RUN echo 'deb http://linux.dropbox.com/ubuntu xenial main' >> /etc/apt/source.list
+RUN apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
 RUN apt-get update
 RUN apt-get install -y python-software-properties
 RUN apt-get install -y software-properties-common
@@ -33,6 +35,8 @@ RUN apt-get install -y python3-pip
 RUN apt-get install -y lynx
 RUN apt-get install -y ruby
 RUN apt-get install -y e2fsprogs
+RUN apt-get install -y zsh
+RUN apt-get install -y dropbox
 #RUN apt-get install -y certbot 
 #RUN apt-get install -y python-certbot-apache
 RUN apt-get install -y --no-install-recommends \
@@ -81,9 +85,9 @@ RUN rm -rf /tmp/atom-amd64.deb
 ########################
 RUN curl -O https://prerelease.keybase.io/keybase_amd64.deb -o /tmp/keybase_amd64.deb
 RUN ls -la /tmp
-RUN dpkg -i /tmp/keybase_amd64.deb 
-RUN cd /tmp && apt-get install -f 
-RUN run_keybase
+#RUN dpkg -i /tmp/keybase_amd64.deb 
+#RUN cd /tmp && apt-get install -f 
+#RUN run_keybase
 
 ########################
 # Install travis-ci cli
