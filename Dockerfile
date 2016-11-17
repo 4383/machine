@@ -101,7 +101,7 @@ RUN ls -la /tmp
 COPY ./.vimrc $HOME
 COPY ./.bashrc $HOME
 COPY ./.bash_aliases $HOME
-RUN uuidgen > ./.uuid
+#RUN uuidgen > ./.uuid
 RUN chown -R developer:developer $HOME
 
 #USER developer
