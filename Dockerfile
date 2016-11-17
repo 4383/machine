@@ -32,6 +32,7 @@ RUN apt-get install -y python3
 RUN apt-get install -y python3-pip
 RUN apt-get install -y lynx
 RUN apt-get install -y ruby
+RUN apt-get install -y e2fsprogs
 #RUN apt-get install -y certbot 
 #RUN apt-get install -y python-certbot-apache
 RUN apt-get install -y --no-install-recommends \
@@ -78,10 +79,8 @@ RUN rm -rf /tmp/atom-amd64.deb
 ########################
 # Install keybase
 ########################
-RUN curl -O https://prerelease.keybase.io/keybase_amd64.deb -o /tmp/keybase_amd64.deb
-RUN dpkg -i /tmp/keybase_amd64.deb
-RUN cd /tmp && apt-get install -f
-RUN run_keybase
+RUN curl -O https://prerelease.keybase.io/keybase_amd64.deb -o /tmp/keybase_amd64.deb && \
+    dpkg -i /tmp/keybase_amd64.deb && cd /tmp && apt-get install -f && run_keybase
 
 ########################
 # Install travis-ci cli
@@ -94,6 +93,7 @@ RUN gem install travis -v 1.8.4 --no-rdoc --no-ri
 COPY ./.vimrc $HOME
 COPY ./.bashrc $HOME
 COPY ./.bash_aliases $HOME
+RUN uuidgen > ./.uuid
 RUN chown -R developer:developer $HOME
 
 USER developer
