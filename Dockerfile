@@ -36,7 +36,8 @@ RUN apt-get install -y lynx
 RUN apt-get install -y ruby
 RUN apt-get install -y e2fsprogs
 RUN apt-get install -y zsh
-RUN apt-get install -y nautilus-dropbox
+RUN apt-get install -y sudo
+#RUN apt-get install -y nautilus-dropbox
 #RUN apt-get install -y certbot 
 #RUN apt-get install -y python-certbot-apache
 RUN apt-get install -y --no-install-recommends \
@@ -55,7 +56,7 @@ RUN apt-get install -y --no-install-recommends \
 ########################
 # Configure user
 ########################
-RUN useradd -ms /bin/bash developer
+RUN useradd -ms /bin/bash developer sudo
 RUN export uid=1000 gid=1000
 ENV HOME /home/developer
 
@@ -103,6 +104,6 @@ COPY ./.bash_aliases $HOME
 RUN uuidgen > ./.uuid
 RUN chown -R developer:developer $HOME
 
-USER developer
+#USER developer
 WORKDIR $HOME
 CMD  sh $HOME/.dropbox-dist/dropboxd && /bin/bash
