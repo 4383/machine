@@ -31,6 +31,9 @@ RUN apt-get install -y wget
 RUN apt-get install -y python3
 RUN apt-get install -y python3-pip
 RUN apt-get install -y lynx
+RUN apt-get install -y ruby
+RUN apt-get install -y certbot 
+RUN apt-get install -y python-certbot-apache
 RUN apt-get install -y --no-install-recommends \
     ca-certificates \
     curl \
@@ -71,6 +74,19 @@ RUN cd /usr && wget -O dropbox.py https://www.dropbox.com/download?dl=packages/d
 RUN curl -SL https://github.com/atom/atom/releases/download/v1.12.3/atom-amd64.deb -o /tmp/atom-amd64.deb
 RUN dpkg --install /tmp/atom-amd64.deb
 RUN rm -rf /tmp/atom-amd64.deb
+
+########################
+# Install keybase
+########################
+RUN curl -O https://prerelease.keybase.io/keybase_amd64.deb -o /tmp/keybase_amd64.deb
+RUN dpkg -i /tmp/keybase_amd64.deb
+RUN cd /tmp && apt-get install -f
+RUN run_keybase
+
+########################
+# Install travis-ci cli
+########################
+RUN gem install travis -v 1.8.4 --no-rdoc --no-ri
 
 ########################
 # Setup home directory
