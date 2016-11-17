@@ -56,7 +56,7 @@ RUN apt-get install -y --no-install-recommends \
 ########################
 # Configure user
 ########################
-RUN useradd -ms /bin/bash developer sudo
+RUN useradd -ms /bin/bash developer
 RUN export uid=1000 gid=1000
 ENV HOME /home/developer
 
