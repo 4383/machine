@@ -36,7 +36,7 @@ RUN apt-get install -y lynx
 RUN apt-get install -y ruby
 RUN apt-get install -y e2fsprogs
 RUN apt-get install -y zsh
-RUN apt-get install -y dropbox
+RUN apt-get install -y nautilus-dropbox
 #RUN apt-get install -y certbot 
 #RUN apt-get install -y python-certbot-apache
 RUN apt-get install -y --no-install-recommends \
