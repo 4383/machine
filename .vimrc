@@ -18,6 +18,7 @@ set shiftwidth=4
 set softtabstop=4
 set background=dark
 set nohlsearch
+set encoding=utf-8
 syntax on
 filetype indent plugin on
 
