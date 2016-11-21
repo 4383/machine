@@ -110,5 +110,4 @@ RUN chown -R developer:developer $HOME
 
 USER developer
 WORKDIR $HOME
-#CMD  /bin/bash
-CMD  /.dropbox-dist/dropboxd && /bin/bash
+CMD  /.dropbox-dist/dropboxd & /bin/bash
