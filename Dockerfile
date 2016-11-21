@@ -35,7 +35,6 @@ RUN apt-get install -y python3-pip
 RUN apt-get install -y lynx
 RUN apt-get install -y ruby
 RUN apt-get install -y ruby-dev 
-RUN apt-get install -y libopenssl-ruby
 RUN apt-get install -y rubygems
 RUN apt-get install -y e2fsprogs
 RUN apt-get install -y zsh
