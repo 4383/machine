@@ -34,6 +34,8 @@ RUN apt-get install -y python3
 RUN apt-get install -y python3-pip
 RUN apt-get install -y lynx
 RUN apt-get install -y ruby
+RUN apt-get install -y ruby-devel
+RUN apt-get install -y rubygems
 RUN apt-get install -y e2fsprogs
 RUN apt-get install -y zsh
 RUN apt-get install -y sudo
@@ -93,7 +95,7 @@ RUN ls -la /tmp
 ########################
 # Install travis-ci cli
 ########################
-#RUN gem install travis -v 1.8.4 --no-rdoc --no-ri
+RUN gem install travis -v 1.8.4 --no-rdoc --no-ri
 
 ########################
 # Setup home directory
