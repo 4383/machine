@@ -19,8 +19,8 @@ MAINTAINER hervé beraud <herveberaud.pro@gmail.com>
 ########################
 # Install packages
 ########################
-RUN echo 'deb http://linux.dropbox.com/ubuntu xenial main' >> /etc/apt/source.list
-RUN apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
+#RUN echo 'deb http://linux.dropbox.com/ubuntu xenial main' >> /etc/apt/source.list
+#RUN apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
 RUN apt-get update
 RUN apt-get install -y python-software-properties
 RUN apt-get install -y software-properties-common
@@ -34,6 +34,8 @@ RUN apt-get install -y python3
 RUN apt-get install -y python3-pip
 RUN apt-get install -y lynx
 RUN apt-get install -y ruby
+RUN apt-get install -y ruby-dev 
+RUN apt-get install -y rubygems
 RUN apt-get install -y e2fsprogs
 RUN apt-get install -y zsh
 RUN apt-get install -y sudo
@@ -71,8 +73,10 @@ RUN curl -LSso $HOME/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 ########################
 # Configure dropbox
 ########################
-RUN cd $HOME && wget -O - "https://www.dropbox.com/download?plat=lnx.x86" | tar xzf -
-RUN cd /usr && wget -O dropbox.py https://www.dropbox.com/download?dl=packages/dropbox.py
+#RUN cd $HOME && wget -O - "https://www.dropbox.com/download?plat=lnx.x86" | tar xzf -
+#RUN cd /usr && wget -O dropbox.py https://www.dropbox.com/download?dl=packages/dropbox.py
+ADD https://www.dropbox.com/download?plat=lnx.x86_64 /dropbox.tgz
+RUN tar xfvz /dropbox.tgz && rm /dropbox.tgz
 
 ########################
 # Install atom
@@ -93,7 +97,7 @@ RUN ls -la /tmp
 ########################
 # Install travis-ci cli
 ########################
-#RUN gem install travis -v 1.8.4 --no-rdoc --no-ri
+RUN gem install travis -v 1.8.4 --no-rdoc --no-ri
 
 ########################
 # Setup home directory
@@ -101,9 +105,9 @@ RUN ls -la /tmp
 COPY ./.vimrc $HOME
 COPY ./.bashrc $HOME
 COPY ./.bash_aliases $HOME
-RUN uuidgen > ./.uuid
+#RUN uuidgen > ./.uuid
 RUN chown -R developer:developer $HOME
 
-#USER developer
+USER developer
 WORKDIR $HOME
-CMD  sh $HOME/.dropbox-dist/dropboxd && /bin/bash
+CMD  /.dropbox-dist/dropboxd & /bin/bash
