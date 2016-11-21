@@ -108,7 +108,7 @@ COPY ./.bash_aliases $HOME
 #RUN uuidgen > ./.uuid
 RUN chown -R developer:developer $HOME
 
-#USER developer
+USER developer
 WORKDIR $HOME
 #CMD  /bin/bash
 CMD  sh $HOME/.dropbox-dist/dropboxd && /bin/bash
