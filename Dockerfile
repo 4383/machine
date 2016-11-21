@@ -19,26 +19,25 @@ MAINTAINER hervé beraud <herveberaud.pro@gmail.com>
 ########################
 # Install packages
 ########################
-#RUN echo 'deb http://linux.dropbox.com/ubuntu xenial main' >> /etc/apt/source.list
-#RUN apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
 RUN apt-get update
-RUN apt-get install -y python-software-properties
-RUN apt-get install -y software-properties-common
-RUN apt-get install -y firefox
-RUN apt-get install -y vim
-RUN apt-get install -y git
-RUN apt-get install -y tmux
-RUN apt-get install -y curl
-RUN apt-get install -y wget
-RUN apt-get install -y python3
-RUN apt-get install -y python3-pip
-RUN apt-get install -y lynx
-RUN apt-get install -y ruby
-RUN apt-get install -y ruby-dev 
-RUN apt-get install -y rubygems
-RUN apt-get install -y e2fsprogs
-RUN apt-get install -y zsh
-RUN apt-get install -y sudo
+RUN apt-get install -y python-software-properties \
+    software-properties-common \ 
+    firefox \
+    vim \
+    git \
+    tmux \
+    curl \
+    wget \
+    python3 \
+    python3-pip \
+    lynx \
+    ruby \
+    ruby-dev \
+    rubygems \
+    e2fsprogs \
+    zsh \
+    sudo
+
 #RUN apt-get install -y certbot 
 #RUN apt-get install -y python-certbot-apache
 RUN apt-get install -y --no-install-recommends \
@@ -72,8 +71,6 @@ RUN curl -LSso $HOME/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 ########################
 # Configure dropbox
 ########################
-#RUN cd $HOME && wget -O - "https://www.dropbox.com/download?plat=lnx.x86" | tar xzf -
-#RUN cd /usr && wget -O dropbox.py https://www.dropbox.com/download?dl=packages/dropbox.py
 ADD https://www.dropbox.com/download?plat=lnx.x86_64 /dropbox.tgz
 RUN tar xfvz /dropbox.tgz && rm /dropbox.tgz
 
