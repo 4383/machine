@@ -39,7 +39,6 @@ RUN apt-get install -y rubygems
 RUN apt-get install -y e2fsprogs
 RUN apt-get install -y zsh
 RUN apt-get install -y sudo
-#RUN apt-get install -y nautilus-dropbox
 #RUN apt-get install -y certbot 
 #RUN apt-get install -y python-certbot-apache
 RUN apt-get install -y --no-install-recommends \
@@ -105,11 +104,13 @@ RUN gem install travis -v 1.8.4 --no-rdoc --no-ri
 COPY ./.vimrc $HOME
 COPY ./.bashrc $HOME
 COPY ./.bash_aliases $HOME
-#RUN uuidgen > ./.uuid
 RUN chown -R developer:developer $HOME
 
 USER developer
 WORKDIR $HOME
-RUN git config --global user.name "Hervé Beraud"
-RUN git config --global user.email "herveberaud.pro@gmail.com"
+ENV GITUSER "Hervé BERAUD" 
+ENV GITMAIL "herveberaud.pro@gmail.com" 
+RUN git config --global user.name $GITUSER
+RUN git config --global user.email $GITMAIL
+
 CMD  /.dropbox-dist/dropboxd & /bin/bash
