@@ -110,4 +110,6 @@ RUN chown -R developer:developer $HOME
 
 USER developer
 WORKDIR $HOME
+RUN git config --global user.name "Hervé Beraud"
+RUN git config --global user.email "herveberaud.pro@gmail.com"
 CMD  /.dropbox-dist/dropboxd & /bin/bash
