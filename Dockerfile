@@ -86,9 +86,9 @@ RUN curl -SL https://github.com/atom/atom/releases/download/v1.12.3/atom-amd64.d
 ########################
 # Install keybase
 ########################
-ADD https://prerelease.keybase.io/keybase_amd64.deb /tmp/keybase_amd64.deb
-RUN dpkg -i /tmp/keybase_amd64.deb 
-RUN cd /tmp && apt-get install -f 
+ADD https://prerelease.keybase.io/keybase_amd64.deb /keybase_amd64.deb
+RUN dpkg -i /keybase_amd64.deb 
+RUN cd / && apt-get install -f 
 RUN run_keybase
 
 ########################
@@ -99,9 +99,9 @@ RUN gem install travis -v 1.8.4 --no-rdoc --no-ri
 ########################
 # Setup home directory
 ########################
-COPY ./machine/.vimrc $HOME
-COPY ./machine/.bashrc $HOME
-COPY ./machine/.bash_aliases $HOME
+COPY ./machine/requirements_dev.txt $HOME
+RUN pip install -r $HOME/requirements_dev.txt && rm $HOME/requirements_dev.txt
+COPY ./machine/.* $HOME
 RUN chown -R developer:developer $HOME
 
 USER developer
@@ -109,6 +109,7 @@ WORKDIR $HOME
 ENV GITUSER "Hervé BERAUD" 
 ENV GITMAIL "herveberaud.pro@gmail.com" 
 RUN git config --global user.name $GITUSER && \ 
-    git config --global user.email $GITMAIL
+    git config --global user.email $GITMAIL && \
+    git config --global push.default current
 
 CMD  /.dropbox-dist/dropboxd & /bin/bash
