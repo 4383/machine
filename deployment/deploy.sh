@@ -10,10 +10,7 @@ then
     git config user.email "herveberaud.pro@gmail.com"
     git add .
     git status
-    git commit -m "[site] Deploy"
-    # We redirect any output to
-    # /dev/null to hide any sensitive credential data that 
-    # might otherwise be exposed.
+    git commit -m "[site][v0.2.0] automatic deployment"
     git push --force --quiet "https://${git_user}:${git_password}@${git_target}" master:gh-pages > /dev/null 2>&1
     echo "gh-pages updated"
 else

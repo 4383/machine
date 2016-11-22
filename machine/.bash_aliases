@@ -4,6 +4,7 @@ alias dev="cd ~/Dropbox/.dev"
 alias activate="source ./bin/activate"
 alias act="source ./bin/activate"
 alias reload=". ~/.bashrc"
+alias pip="pip3"
 
 ##########################
 # create dir and go into

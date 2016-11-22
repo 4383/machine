@@ -6,7 +6,7 @@ Your development environment embedded in a docker container
 [![Docker Pulls](https://img.shields.io/docker/pulls/4383/machine.svg)]()
 
 ## Version
-v0.1.0
+v0.2.0
 
 ## Features
 - vim

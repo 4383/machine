@@ -9,7 +9,7 @@
 #                                                       
 # Use your development environment anywhere !
 # https://github.com/4383/machine
-# v0.1.0
+# v0.2.0
 # Created by : Hervé BERAUD (4383)
 ###############################################################
 FROM ubuntu:latest
@@ -36,7 +36,9 @@ RUN apt-get update && \
     rubygems \
     e2fsprogs \
     zsh \
-    sudo
+    sudo \
+    virtualenv \
+    virtualenvwrapper
 
 RUN apt-get install -y --no-install-recommends \
     ca-certificates \
@@ -50,6 +52,7 @@ RUN apt-get install -y --no-install-recommends \
     libxtst6 \
     xdg-utils \
     && rm -rf /var/lib/apt/lists/*
+
 #RUN apt-get install -y certbot 
 #RUN apt-get install -y python-certbot-apache
 
@@ -84,10 +87,12 @@ RUN curl -SL https://github.com/atom/atom/releases/download/v1.12.3/atom-amd64.d
 ########################
 # Install keybase
 ########################
-RUN curl -O https://prerelease.keybase.io/keybase_amd64.deb -o /tmp/keybase_amd64.deb
-#RUN dpkg -i /tmp/keybase_amd64.deb 
-#RUN cd /tmp && apt-get install -f 
-#RUN run_keybase
+#RUN apt-get -f install libappindicator1 \
+#    fuse
+#RUN curl -SL https://prerelease.keybase.io/keybase_amd64.deb -o /keybase_amd64.deb && \
+#    dpkg -i /keybase_amd64.deb && \
+#    cd / && apt-get install -f && \
+#    run_keybase
 
 ########################
 # Install travis-ci cli
@@ -97,9 +102,10 @@ RUN gem install travis -v 1.8.4 --no-rdoc --no-ri
 ########################
 # Setup home directory
 ########################
-COPY ./.vimrc $HOME
-COPY ./.bashrc $HOME
-COPY ./.bash_aliases $HOME
+COPY ./machine/requirements_dev.txt $HOME
+RUN pip3 install -r $HOME/requirements_dev.txt
+COPY ./machine/ $HOME
+RUN rm $HOME/requirements_dev.txt
 RUN chown -R developer:developer $HOME
 
 USER developer
@@ -107,6 +113,7 @@ WORKDIR $HOME
 ENV GITUSER "Hervé BERAUD" 
 ENV GITMAIL "herveberaud.pro@gmail.com" 
 RUN git config --global user.name $GITUSER && \ 
-    git config --global user.email $GITMAIL
+    git config --global user.email $GITMAIL && \
+    git config --global push.default current
 
 CMD  /.dropbox-dist/dropboxd & /bin/bash
