@@ -52,6 +52,7 @@ RUN apt-get install -y --no-install-recommends \
     libxtst6 \
     xdg-utils \
     && rm -rf /var/lib/apt/lists/*
+
 #RUN apt-get install -y certbot 
 #RUN apt-get install -y python-certbot-apache
 
@@ -86,6 +87,8 @@ RUN curl -SL https://github.com/atom/atom/releases/download/v1.12.3/atom-amd64.d
 ########################
 # Install keybase
 ########################
+RUN apt-get -f install libappindicator1 \
+    fuse
 RUN curl -SL https://prerelease.keybase.io/keybase_amd64.deb -o /keybase_amd64.deb && \
     dpkg -i /keybase_amd64.deb && \
     cd / && apt-get install -f && \
