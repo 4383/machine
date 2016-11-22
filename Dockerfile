@@ -19,8 +19,8 @@ MAINTAINER hervé beraud <herveberaud.pro@gmail.com>
 ########################
 # Install packages
 ########################
-RUN apt-get update
-RUN apt-get install -y python-software-properties \
+RUN apt-get update && \
+    apt-get install -y python-software-properties \
     software-properties-common \ 
     firefox \
     vim \
@@ -77,15 +77,14 @@ RUN tar xfvz /dropbox.tgz && rm /dropbox.tgz
 ########################
 # Install atom
 ########################
-RUN curl -SL https://github.com/atom/atom/releases/download/v1.12.3/atom-amd64.deb -o /tmp/atom-amd64.deb
-RUN dpkg --install /tmp/atom-amd64.deb
-RUN rm -rf /tmp/atom-amd64.deb
+RUN curl -SL https://github.com/atom/atom/releases/download/v1.12.3/atom-amd64.deb -o /tmp/atom-amd64.deb && \
+    dpkg --install /tmp/atom-amd64.deb && \
+    rm -rf /tmp/atom-amd64.deb
 
 ########################
 # Install keybase
 ########################
 RUN curl -O https://prerelease.keybase.io/keybase_amd64.deb -o /tmp/keybase_amd64.deb
-RUN ls -la /tmp
 #RUN dpkg -i /tmp/keybase_amd64.deb 
 #RUN cd /tmp && apt-get install -f 
 #RUN run_keybase
@@ -107,7 +106,7 @@ USER developer
 WORKDIR $HOME
 ENV GITUSER "Hervé BERAUD" 
 ENV GITMAIL "herveberaud.pro@gmail.com" 
-RUN git config --global user.name $GITUSER
-RUN git config --global user.email $GITMAIL
+RUN git config --global user.name $GITUSER && \ 
+    git config --global user.email $GITMAIL
 
 CMD  /.dropbox-dist/dropboxd & /bin/bash
