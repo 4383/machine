@@ -103,8 +103,9 @@ RUN gem install travis -v 1.8.4 --no-rdoc --no-ri
 # Setup home directory
 ########################
 COPY ./machine/requirements_dev.txt $HOME
-RUN pip3 install -r $HOME/requirements_dev.txt && rm $HOME/requirements_dev.txt
-COPY ./machine/.* $HOME
+RUN pip3 install -r $HOME/requirements_dev.txt
+COPY ./machine/ $HOME
+RUN rm $HOME/requirements_dev.txt
 RUN chown -R developer:developer $HOME
 
 USER developer
