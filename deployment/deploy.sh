@@ -2,7 +2,7 @@
 
 if [[ $TRAVIS_BRANCH == 'master' ]] ; 
 then
-    cd site/out
+    cd site
     git init
      
     git config user.name "Hervé Beraud"

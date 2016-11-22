@@ -20,5 +20,4 @@ script:
 
 after_success:
     - chmod +x -R deployment
-    - deployment/build.sh
     - deployment/deploy.sh
