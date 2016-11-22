@@ -36,7 +36,9 @@ RUN apt-get update && \
     rubygems \
     e2fsprogs \
     zsh \
-    sudo
+    sudo \
+    virtualenv \
+    virtualenvwrapper
 
 RUN apt-get install -y --no-install-recommends \
     ca-certificates \
@@ -84,10 +86,10 @@ RUN curl -SL https://github.com/atom/atom/releases/download/v1.12.3/atom-amd64.d
 ########################
 # Install keybase
 ########################
-RUN curl -O https://prerelease.keybase.io/keybase_amd64.deb -o /tmp/keybase_amd64.deb
-#RUN dpkg -i /tmp/keybase_amd64.deb 
-#RUN cd /tmp && apt-get install -f 
-#RUN run_keybase
+ADD https://prerelease.keybase.io/keybase_amd64.deb /tmp/keybase_amd64.deb
+RUN dpkg -i /tmp/keybase_amd64.deb 
+RUN cd /tmp && apt-get install -f 
+RUN run_keybase
 
 ########################
 # Install travis-ci cli
@@ -97,9 +99,9 @@ RUN gem install travis -v 1.8.4 --no-rdoc --no-ri
 ########################
 # Setup home directory
 ########################
-COPY ./.vimrc $HOME
-COPY ./.bashrc $HOME
-COPY ./.bash_aliases $HOME
+COPY ./machine/.vimrc $HOME
+COPY ./machine/.bashrc $HOME
+COPY ./machine/.bash_aliases $HOME
 RUN chown -R developer:developer $HOME
 
 USER developer
