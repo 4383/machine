@@ -9,7 +9,7 @@
 #                                                       
 # Use your development environment anywhere !
 # https://github.com/4383/machine
-# v0.1.0
+# v0.2.0
 # Created by : Hervé BERAUD (4383)
 ###############################################################
 FROM ubuntu:latest
