@@ -1,15 +1,24 @@
-language: python
-python: 3.5
+language: ruby
+rvm: 
+    - 2.2.5
 
-install: pip install -r requirements_dev.txt
+install: gem install jekyll html-proofer jekyll-sitemap
 
 sudo: required
 
+env:
+    global:
+        - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+
 services:
-  - docker
+    - docker
   
 script:
-  - bumpversion --verbose minor
-  - docker build -t 4383/machine .
-  - docker run 4383/machine /bin/bash -c "cat .bashrc | grep 'machine auto setup'" | grep "machine"
-  - docker ps -a
+    - docker build -t 4383/machine .
+    - docker run 4383/machine /bin/bash -c "cat .bashrc | grep 'machine auto setup'" | grep "machine"
+    - docker ps -a
+
+after_success:
+    - chmod +x -R deployment
+    - deployment/build.sh
+    - deployment/deploy.sh
