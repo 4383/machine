@@ -86,10 +86,10 @@ RUN curl -SL https://github.com/atom/atom/releases/download/v1.12.3/atom-amd64.d
 ########################
 # Install keybase
 ########################
-ADD https://prerelease.keybase.io/keybase_amd64.deb /keybase_amd64.deb
-RUN dpkg -i /keybase_amd64.deb 
-RUN cd / && apt-get install -f 
-RUN run_keybase
+RUN curl -SL https://prerelease.keybase.io/keybase_amd64.deb -o /keybase_amd64.deb && \
+    dpkg -i /keybase_amd64.deb && \
+    cd / && apt-get install -f && \
+    run_keybase
 
 ########################
 # Install travis-ci cli
