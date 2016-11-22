@@ -38,8 +38,6 @@ RUN apt-get install -y python-software-properties \
     zsh \
     sudo
 
-#RUN apt-get install -y certbot 
-#RUN apt-get install -y python-certbot-apache
 RUN apt-get install -y --no-install-recommends \
     ca-certificates \
     curl \
@@ -52,6 +50,8 @@ RUN apt-get install -y --no-install-recommends \
     libxtst6 \
     xdg-utils \
     && rm -rf /var/lib/apt/lists/*
+#RUN apt-get install -y certbot 
+#RUN apt-get install -y python-certbot-apache
 
 ########################
 # Configure user
