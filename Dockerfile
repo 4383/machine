@@ -87,12 +87,12 @@ RUN curl -SL https://github.com/atom/atom/releases/download/v1.12.3/atom-amd64.d
 ########################
 # Install keybase
 ########################
-RUN apt-get -f install libappindicator1 \
-    fuse
-RUN curl -SL https://prerelease.keybase.io/keybase_amd64.deb -o /keybase_amd64.deb && \
-    dpkg -i /keybase_amd64.deb && \
-    cd / && apt-get install -f && \
-    run_keybase
+#RUN apt-get -f install libappindicator1 \
+#    fuse
+#RUN curl -SL https://prerelease.keybase.io/keybase_amd64.deb -o /keybase_amd64.deb && \
+#    dpkg -i /keybase_amd64.deb && \
+#    cd / && apt-get install -f && \
+#    run_keybase
 
 ########################
 # Install travis-ci cli
