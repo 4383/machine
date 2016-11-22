@@ -19,7 +19,7 @@ MAINTAINER hervé beraud <herveberaud.pro@gmail.com>
 ########################
 # Install packages
 ########################
-RUN apt-get update \
+RUN apt-get update && \
     apt-get install -y python-software-properties \
     software-properties-common \ 
     firefox \
