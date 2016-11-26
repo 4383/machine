@@ -38,7 +38,14 @@ RUN apt-get update && \
     zsh \
     sudo \
     virtualenv \
-    virtualenvwrapper
+    virtualenvwrapper \
+    ruby \
+    ruby-dev \
+    make \
+    gcc \
+    nodejs
+
+RUN gem install jekyll --no-rdoc --no-ri
 
 RUN apt-get install -y --no-install-recommends \
     ca-certificates \
