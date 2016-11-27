@@ -9,7 +9,7 @@
 #                                                       
 # Use your development environment anywhere !
 # https://github.com/4383/machine
-# v0.2.0
+# v0.3.0
 # Created by : Hervé BERAUD (4383)
 ###############################################################
 FROM ubuntu:latest
@@ -38,7 +38,14 @@ RUN apt-get update && \
     zsh \
     sudo \
     virtualenv \
-    virtualenvwrapper
+    virtualenvwrapper \
+    ruby \
+    ruby-dev \
+    make \
+    gcc \
+    nodejs
+
+RUN gem install jekyll --no-rdoc --no-ri
 
 RUN apt-get install -y --no-install-recommends \
     ca-certificates \
