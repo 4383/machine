@@ -46,6 +46,7 @@ RUN apt-get update && \
     nodejs
 
 RUN gem install jekyll --no-rdoc --no-ri
+RUN gem install bundler --no-rdoc --no-ri
 
 RUN apt-get install -y --no-install-recommends \
     ca-certificates \
