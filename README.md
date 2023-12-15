@@ -14,8 +14,19 @@ v0.3.0
 - firefox
 
 ## Usages
+
+Ubuntu:
 ```shell
+docker build -t machine .
 docker run -it 4383/machine:latest
+```
+
+Python:
+
+```shell
+$ cd python
+$ docker build -t machine-python310 .
+$ docker run -it --rm --name mpython310 --mount type=bind,source="$(pwd)",target=/home/developer/app machine-python310 /bin/bash
 ```
 ## Contribute
 - fork this repository
