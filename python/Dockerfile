@@ -12,10 +12,12 @@
 # v0.3.0
 # Created by : Hervé BERAUD (4383)
 ###############################################################
-FROM python:3.11-bookworm
+FROM python:3.10-bookworm
 
 MAINTAINER hervé beraud <herveberaud.pro@gmail.com>
 
+RUN apt update -y
+RUN apt install -y vim
 ########################
 # Configure user
 ########################
