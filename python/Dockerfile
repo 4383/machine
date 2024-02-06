@@ -17,7 +17,7 @@ FROM python:3.10-bookworm
 MAINTAINER hervé beraud <herveberaud.pro@gmail.com>
 
 RUN apt update -y
-RUN apt install -y vim
+RUN apt install -y vim strace
 ########################
 # Configure user
 ########################
