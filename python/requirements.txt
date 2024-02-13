@@ -1,2 +1,5 @@
 tox
 regexploit
+py-spy
+scalene
+pysnooper

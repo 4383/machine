@@ -16,7 +16,7 @@ Python:
 $ cd python
 $ docker build -t machine-python312 .
 $ # run the main instance of the dev container with a default dashboard
-$ docker run -it --rm --name dev_$(basename $(pwd))_py312 -e CONTAINER_NAME=dev_$(basename $(pwd))_py312 --mount type=bind,source="$(pwd)",target=/home/developer/app machine-python312 /bin/bash
+$ NAME=$(basename $(pwd))_py312; docker run -it --rm --name $NAME -e CONTAINER_NAME=$NAME --privileged --mount type=bind,source="$(pwd)",target=/home/developer/app machine-python312 /bin/bash
 $ # run an other shell into this same container
 $ docker exec -it dev_python_py312 /bin/bash
 $ # stop all the instances of this container

@@ -12,7 +12,7 @@
 # v0.3.0
 # Created by : Hervé BERAUD (4383)
 ###############################################################
-FROM python:3.12-bookworm
+FROM python:3.12-bullseye
 
 MAINTAINER hervé beraud <herveberaud.pro@gmail.com>
 
@@ -29,22 +29,29 @@ RUN apt install -y \
     gcc \
     zsh \
     tree \
-    xclip
+    xclip \
+    aspell \
+    less \
+    sudo \
+    valgrind
 
 
 ########################
 # Configure user
 ########################
-RUN useradd -ms /bin/bash developer
+RUN useradd -ms /bin/bash dev && \
+    echo dev:dev | chpasswd && \
+    adduser dev sudo
 RUN export uid=1000 gid=1000
-ENV HOME /home/developer
-RUN chown -R developer:developer $HOME
-RUN usermod --shell /bin/zsh developer
+ENV HOME /home/dev
+RUN chown -R dev:dev $HOME
+RUN usermod --shell /bin/zsh dev
 
 ########################
 # Configure Vim
 ########################
-COPY vimrc HOME/.vimrc
+COPY vimrc $HOME/.vimrc
+COPY vimbundle $HOME/.vim/bundle
 
 ########################
 # Setup home directory
@@ -56,8 +63,8 @@ RUN pip3 install -r $HOME/requirements.txt
 # Configure zsh
 ########################
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-RUN echo 'ZSH_THEME="agnoster"' >> ~/.zshrc
-RUN echo "export EDITOR=vim" >> ~/.zshrc
+COPY zshrc $HOME/.zshrc
+COPY agnoster.zsh-theme $HOME/.oh-my-zsh/themes/agnoster.zsh-theme
 
 ########################
 # Setup git
@@ -74,7 +81,7 @@ RUN git config --global user.name $GITUSER && \
 COPY ./tmuxrc $HOME
 COPY ./motd /etc
 
-USER developer
+USER dev
 WORKDIR $HOME/app
 
 ENTRYPOINT exec tmux new-session 'tmux source-file ~/tmuxrc'
