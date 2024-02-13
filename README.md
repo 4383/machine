@@ -26,6 +26,6 @@ $ # stop all the instances of this container
 $ docker stop dev_python_py312
 ```
 
-Running the `docker run` command give you the following dashboard (nested tmux on my local env):
+Running the `docker run` command give you the following dashboard:
 
 ![Default dashboard](example.png "Default dashboard")
