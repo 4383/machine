@@ -7,7 +7,10 @@ Your development environment embedded in a docker container
 ## Features
 - vim
 - oh-my-zsh
-- preconfigured tmux
+- preconfigured tmux (list mounted directory, show running process, perf tools ready to run)
+- tox and python process automatically run with the PID set to `666` (not need to search your PID)
+- regexploit ready to run
+- valgrind, pysnooper, py-spy, scalene run out of the box
 
 ## Usages
 
