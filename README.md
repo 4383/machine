@@ -26,7 +26,9 @@ Python:
 ```shell
 $ cd python
 $ docker build -t machine-python310 .
-$ docker run -it --rm --name mpython310 --mount type=bind,source="$(pwd)",target=/home/developer/app machine-python310 /bin/bash
+# name the new instance with the current directory name
+# to allow multiple instances in the same time
+$ docker run -it --rm --name dev_$(basename $(pwd))_py310 --mount type=bind,source="$(pwd)",target=/home/developer/app machine-python310 /bin/bash
 ```
 ## Contribute
 - fork this repository
