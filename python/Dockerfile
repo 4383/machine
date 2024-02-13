@@ -28,7 +28,8 @@ RUN apt install -y \
     make \
     gcc \
     zsh \
-    tree
+    tree \
+    xclip
 
 
 ########################
@@ -71,6 +72,7 @@ RUN git config --global user.name $GITUSER && \
 # Setup tmux
 ########################
 COPY ./tmuxrc $HOME
+COPY ./motd /etc
 
 USER developer
 WORKDIR $HOME/app

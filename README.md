@@ -1,41 +1,28 @@
 # machine
 Your development environment embedded in a docker container
 
-[![Travis](https://img.shields.io/travis/4383/machine.svg)]()
-[![Docker Automated buil](https://img.shields.io/docker/automated/4383/machine.svg)]()
+[![Docker Automated build](https://img.shields.io/docker/automated/4383/machine.svg)]()
 [![Docker Pulls](https://img.shields.io/docker/pulls/4383/machine.svg)]()
-
-## Version
-v0.3.0
 
 ## Features
 - vim
-- improved bash
-- firefox
+- oh-my-zsh
+- preconfigured tmux
 
 ## Usages
 
-Ubuntu:
-```shell
-docker build -t machine .
-docker run -it 4383/machine:latest
-```
-
 Python:
-
 ```shell
 $ cd python
-$ docker build -t machine-python310 .
-# name the new instance with the current directory name
-# to allow multiple instances in the same time
-$ docker run -it --rm --name dev_$(basename $(pwd))_py310 --mount type=bind,source="$(pwd)",target=/home/developer/app machine-python310 /bin/bash
+$ docker build -t machine-python312 .
+$ # run the main instance of the dev container with a default dashboard
+$ docker run -it --rm --name dev_$(basename $(pwd))_py312 -e CONTAINER_NAME=dev_$(basename $(pwd))_py312 --mount type=bind,source="$(pwd)",target=/home/developer/app machine-python312 /bin/bash
+$ # run an other shell into this same container
+$ docker exec -it dev_python_py312 /bin/bash
+$ # stop all the instances of this container
+$ docker stop dev_python_py312
 ```
-## Contribute
-- fork this repository
-- add your modifications
-- send a pull request
 
-## Roadmap
-- add atom text editor
-- add python installation
-- add docker installation
+Running the `docker run` command give you the following dashboard (nested tmux on my local env):
+
+![Default dashboard](example.png "Default dashboard")

@@ -38,8 +38,11 @@ setw -g window-status-bell-style 'fg=colour2 bg=colour1 bold'
 set -g message-style 'fg=colour2 bg=colour0 bold'
 
 neww;
-send-keys 'tree' C-m;
-split-window -v;
+send-keys 'tree -L 1' C-m;
+split-window -h -p 80;
+send-keys 'cat /etc/motd' C-m;
+send-keys 'echo "docker exec -it $CONTAINER_NAME /bin/bash"' C-m;
+split-window -v
 send-keys 'watch -n 1 "ps aux | grep python | grep -wv grep"' C-m;
 split-window -h;
 send-keys 'top' C-m;
