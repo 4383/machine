@@ -56,8 +56,8 @@ COPY vimbundle $HOME/.vim/bundle
 ########################
 # Setup home directory
 ########################
-COPY ./requirements.txt $HOME
-RUN pip3 install -r $HOME/requirements.txt
+COPY ./requirements.txt $HOME/.requirements.txt
+RUN pip3 install -r $HOME/.requirements.txt
 
 ########################
 # Configure zsh
@@ -78,10 +78,10 @@ RUN git config --global user.name $GITUSER && \
 ########################
 # Setup tmux
 ########################
-COPY ./tmuxrc $HOME
+COPY ./tmuxrc $HOME/.tmuxrc
 COPY ./motd /etc
 
 USER dev
 WORKDIR $HOME/app
 
-ENTRYPOINT exec tmux new-session 'tmux source-file ~/tmuxrc'
+ENTRYPOINT exec tmux new-session 'tmux source-file ~/.tmuxrc'
