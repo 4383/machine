@@ -5,12 +5,17 @@ Your development environment embedded in a docker container
 [![Docker Pulls](https://img.shields.io/docker/pulls/4383/machine.svg)]()
 
 ## Features
-- vim
-- oh-my-zsh
-- preconfigured tmux (list mounted directory, show running process, perf tools ready to run)
-- tox and python process automatically run with the PID set to `666` (not need to search your PID)
+- Assigned PID: python/tox process is automatically assigned PID `666`
+  No need to search your PID
+- Running the docker image automatically launch preconfigured tmux with:
+    - list mounted directory
+    - show running process
+    - perf tools ready to run against PID `666`
+    - automatic monitoring context switch of PID `666`
 - regexploit ready to run
 - valgrind, pysnooper, py-spy, scalene run out of the box
+- vim
+- oh-my-zsh
 
 ## Usages
 

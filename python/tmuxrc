@@ -48,3 +48,10 @@ split-window -h;
 send-keys 'watch -n 1 "ps aux | grep python | grep -wv grep"' C-m;
 split-window -v -p 20;
 send-keys 'py-spy record -o profile.svg --pid 666';
+# back at left pane
+select-pane -L;
+split-window -v -p 40;
+send-keys 'watch -n.5 grep ctxt /proc/666/status' C-m;
+# back to the upper pane
+select-pane -U;
+select-pane -U;
