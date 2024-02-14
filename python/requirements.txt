@@ -3,3 +3,4 @@ regexploit
 py-spy
 scalene
 pysnooper
+pyprof2calltree
