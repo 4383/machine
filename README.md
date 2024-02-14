@@ -34,3 +34,9 @@ $ docker stop dev_python_py312
 Running the `docker run` command give you the following dashboard:
 
 ![Default dashboard](example.png "Default dashboard")
+
+## Demo
+
+Here is a demo of how it works:
+
+[![asciicast](https://asciinema.org/a/0e7cLRsHiNJlBQdlIgdkApAsU.svg)](https://asciinema.org/a/0e7cLRsHiNJlBQdlIgdkApAsU)
