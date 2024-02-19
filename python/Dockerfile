@@ -33,7 +33,9 @@ RUN apt install -y \
     aspell \
     less \
     sudo \
-    valgrind
+    valgrind \
+    net-tools \
+    bpftrace
 
 
 ########################

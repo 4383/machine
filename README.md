@@ -17,6 +17,26 @@ Your development environment embedded in a docker container
 - vim
 - oh-my-zsh
 
+## Disclaimers
+
+Using this environment could generate various extra files into
+the mounted repository. To avoid tracking these files accidentally,
+you can create a global gitignore file that will be applied everywher
+you are using `git`. These rules will be used in addition to the ones
+provided in the repositories you works on.
+
+First create a `~/.gitignore` file.
+Once done, put these extra files patterns into this global gitignore file:
+
+```
+profiling.cprof
+strace.txt
+cmt_msg
+.zsh_history
+```
+
+Then run this command `git config --global core.excludesFile '~/.gitignore'`.
+
 ## Usages
 
 Python:
@@ -34,6 +54,9 @@ $ docker stop dev_python_py312
 Running the `docker run` command give you the following dashboard:
 
 ![Default dashboard](example.png "Default dashboard")
+
+If you output things in files under `~/app`, then these files will remain
+available even after the container shutdown. They will be reloaded at your next container restart.
 
 ## Demo
 
