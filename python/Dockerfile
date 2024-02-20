@@ -35,7 +35,10 @@ RUN apt install -y \
     sudo \
     valgrind \
     net-tools \
-    bpftrace
+    python3-dev \
+    gcc-10-plugin-dev \
+    bpftrace \
+    python3-dbg
 
 
 ########################
