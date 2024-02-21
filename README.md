@@ -39,7 +39,6 @@ Then run this command `git config --global core.excludesFile '~/.gitignore'`.
 
 ## Usages
 
-Python:
 ```shell
 $ cd python
 $ docker build -t machine-python312 .
@@ -57,6 +56,27 @@ Running the `docker run` command give you the following dashboard:
 
 If you output things in files under `~/app`, then these files will remain
 available even after the container shutdown. They will be reloaded at your next container restart.
+
+You may want to trace or monitor things inside your container, so the
+following command show you how enabling [eBPF](https://ebpf.io/) and
+[BCC](https://github.com/iovisor/bcc) from mounting specific
+volumes from your host:
+
+```
+NAME=$(basename $(pwd))_py312; docker run -it --rm --name $NAME --mount type=bind,source="$(pwd)",target=/home/dev/app -e CONTAINER_NAME=$NAME -v /lib/modules:/lib/modules:ro -v /usr/src:/usr/src:ro -v /etc/localtime:/etc/localtime:ro -v /usr/share/bcc/tools/:/usr/share/bcc/tools:ro  --privileged machine-python312 /bin/bash
+```
+
+This container is built with BCC support. However, your host machine should
+be also [setup to support BCC](https://github.com/iovisor/bcc/blob/master/INSTALL.md).
+
+Once your container is running, you can launch eBPF BCC based tracing by
+using commands like:
+
+```
+$ sudo /usr/share/bcc/tools/runqslower
+```
+
+Using `sudo` could be required.
 
 ## Demo
 
