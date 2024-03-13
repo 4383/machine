@@ -29,7 +29,7 @@ RUN wget https://apt.llvm.org/llvm-snapshot.gpg.key -O llvm-snapshot.gpg.key
 RUN apt-key add llvm-snapshot.gpg.key
 
 RUN apt update -y
-RUN apt upgrade -y
+#RUN apt upgrade -y
 RUN apt install -y \
     libllvm-15-ocaml-dev \
     libllvm15 \
@@ -70,7 +70,10 @@ RUN apt install -y \
     gcc-10-plugin-dev \
     bpftrace \
     python3-dbg \
-    locate
+    locate \
+    tcpdump \
+    lsof \
+    telnet
 
 
 ########################
