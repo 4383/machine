@@ -6,3 +6,4 @@ pysnooper
 pyprof2calltree
 cython
 pyinstaller
+python-scalpel

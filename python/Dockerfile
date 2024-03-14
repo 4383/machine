@@ -47,7 +47,10 @@ RUN apt install -y \
     libbpfcc \
     libbpfcc-dev \
     linux-headers-generic \
-    libelf-dev
+    libelf-dev \
+    binutils \
+    pax-utils
+    #execstack
 RUN apt install -y \
     vim \
     strace \
