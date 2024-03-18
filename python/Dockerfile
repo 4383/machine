@@ -87,14 +87,12 @@ RUN useradd -ms /bin/bash dev && \
     adduser dev sudo
 RUN export uid=1000 gid=1000
 ENV HOME /home/dev
-RUN chown -R dev:dev $HOME
-RUN usermod --shell /bin/zsh dev
-
-########################
-# Configure Vim
-########################
 COPY vimrc $HOME/.vimrc
 COPY vimbundle $HOME/.vim/bundle
+RUN mkdir $HOME/.vim/tmp
+RUN mkdir $HOME/.vim/backup
+RUN chown -R dev:dev $HOME
+RUN usermod --shell /bin/zsh dev
 
 ########################
 # Setup home directory
